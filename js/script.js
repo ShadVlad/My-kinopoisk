@@ -114,13 +114,16 @@ function showFullInfo() {
     })
     .then((output) => {
       //console.log("output: ", output.homepage);
+      const poster = output.poster_path
+        ? urlPoster + output.poster_path
+        : "../img/no-poster.jpg";
       movie.innerHTML =
         `
       <h4 class="col-12 text-center text-info">${
         output.name || output.title
       }</h4>
       <div class="col-4">
-      <img src='${urlPoster + output.poster_path}' class='img_poster' alt='${
+      <img src='${poster}' class='img_poster' alt='${
           output.name || output.title
         }'>
       ${
@@ -149,9 +152,11 @@ function showFullInfo() {
         `  
       <p>Статус: ${output.overview}</p>   
       <br>   
-      <div class='youtube'></div>
+      <div class='youtube'>
+      </div>
       </div>
       `;
+      getVideo(this.dataset.type, this.dataset.id);
     })
     .catch((reason) => {
       movie.innerHTML = "Oups ....";
@@ -202,3 +207,36 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("error: ", reason.status);
     });
 });
+
+function getVideo(type, id) {
+  let youtube = movie.querySelector(".youtube");
+
+  fetch(
+    `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=6f901a307f9152261580666f11e60bb2&language=ru`
+  )
+    .then((value) => {
+      if (value.status !== 200) {
+        return Promise.reject(value);
+      }
+      return value.json();
+    })
+    .then((output) => {
+      let videoFrame = '<h5 class="col-1 text-info">Трейлеры</h5>';
+
+      if (output.results.length === 0) {
+        videoFrame = "<p>К сожалению видео отсутствует</p>";
+      }
+      output.results.forEach((item) => {
+        videoFrame +=
+          '<iframe width="560" height="315" src="https://www.youtube.com/embed/' +
+          item.key +
+          '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      });
+      youtube.innerHTML = videoFrame;
+    })
+    .catch((reason) => {
+      movie.innerHTML = "По Вашему запросу видео не найдено ...";
+      console.error(reason || reason.status);
+    });
+  youtube.innerHTML = type;
+}
