@@ -114,20 +114,20 @@ function showFullInfo() {
     })
     .then((output) => {
       //console.log("output: ", output.homepage);
-      movie.innerHTML = `
+      movie.innerHTML =
+        `
       <h4 class="col-12 text-center text-info">${
         output.name || output.title
       }</h4>
-      
       <div class="col-4">
       <img src='${urlPoster + output.poster_path}' class='img_poster' alt='${
-        output.name || output.title
-      }'> 
+          output.name || output.title
+        }'>
       ${
         output.homepage
           ? `<p class="text-center"><a href="${output.homepage}" target="_blank">Официальный сайт</a></p>`
           : ""
-      }  
+      }
       ${
         output.imdb_id
           ? `<p class="text-center"><a href="https://imdb.com/title/${output.imdb_id}" target="_blank">На сайте IMDB.com</a></p>`
@@ -138,11 +138,16 @@ function showFullInfo() {
       <p>Рейтинг: ${output.vote_average}</p>
       <p>Статус: ${output.status}</p>
       <p>Премьера: ${output.first_air_date || output.release_date}</p> 
-      ${
-        output.last_episode_to_air
-          ? `<p class="text-left">${output.number_of_seasons} сезон ${output.last_episode_to_air.episode_number} серий вышло</p>`
-          : ""
-      }  
+      ` +
+        // +
+        //   `
+        // ${
+        //   output.last_episode_to_air
+        //     ? `<p>${output.number_of_seasons} сезон ${output.last_episode_to_air.episode_number} серий вышло</p>`
+        //     : ""
+        // }
+        //`
+        `  
       <p>Статус: ${output.overview}</p>   
       <br>   
       <div class='youtube'></div>
