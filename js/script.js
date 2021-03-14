@@ -1,4 +1,4 @@
-const searcForm = document.querySelector("#search-form");
+const searchForm = document.querySelector("#search-form");
 const movie = document.querySelector("#movies");
 const urlPoster = "https://image.tmdb.org/t/p/w500";
 
@@ -57,7 +57,7 @@ function apiSearch(event) {
     });
 }
 
-searcForm.addEventListener("submit", apiSearch);
+searchForm.addEventListener("submit", apiSearch);
 
 // function requestApi(method, url) {
 //   return new Promise(function (resolve, reject) {
