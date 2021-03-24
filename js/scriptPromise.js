@@ -1,4 +1,4 @@
-const searcForm = document.querySelector("#search-form");
+const searchForm = document.querySelector("#search-form");
 const movie = document.querySelector("#movies");
 
 function apiSearch(event) {
@@ -7,7 +7,7 @@ function apiSearch(event) {
   //console.log("Hello, world!");
   const searchText = document.querySelector(".form-control").value,
     server =
-      "https://api.themoviedb.org/3/search/multi?api_key=6f901a307f9152261580666f11e60bb2&language=ru&query=" +
+      "https://api.themoviedb.org/3/search/multi?api_key=c51d3f0070448d84fa60e1341dd94608&language=ru&query=" +
       searchText;
   movie.innerHTML = "Download...";
   //console.log("searchText: ", searchText);
