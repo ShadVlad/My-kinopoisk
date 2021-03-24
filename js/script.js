@@ -8,7 +8,7 @@ function apiSearch(event) {
   //console.log("Hello, world!");
   const searchText = document.querySelector(".form-control").value,
     server =
-      "https://api.themoviedb.org/3/search/multi?api_key=6f901a307f9152261580666f11e60bb2&language=ru&query=" +
+      "https://api.themoviedb.org/3/search/multi?api_key=c51d3f0070448d84fa60e1341dd94608&language=ru&query=" +
       searchText;
   if (searchText.trim().length === 0) {
     movie.innerHTML =
@@ -94,12 +94,12 @@ function showFullInfo() {
     url =
       "https://api.themoviedb.org/3/movie/" +
       this.dataset.id +
-      "?api_key=6f901a307f9152261580666f11e60bb2&language=ru";
+      "?api_key=c51d3f0070448d84fa60e1341dd94608&language=ru";
   } else if (this.dataset.type === "tv") {
     url =
       "https://api.themoviedb.org/3/tv/" +
       this.dataset.id +
-      "?api_key=6f901a307f9152261580666f11e60bb2&language=ru";
+      "?api_key=c51d3f0070448d84fa60e1341dd94608&language=ru";
   } else {
     movie.innerHTML =
       '<h2 class="col-12 text-center text-danger">Произошла ошибка, повторите позже</h2>';
@@ -212,7 +212,7 @@ function getVideo(type, id) {
   let youtube = movie.querySelector(".youtube");
 
   fetch(
-    `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=6f901a307f9152261580666f11e60bb2&language=ru`
+    `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=c51d3f0070448d84fa60e1341dd94608&language=ru`
   )
     .then((value) => {
       if (value.status !== 200) {

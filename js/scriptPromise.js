@@ -29,7 +29,7 @@ function apiSearch(event) {
     });
 }
 
-searcForm.addEventListener("submit", apiSearch);
+searchForm.addEventListener("submit", apiSearch);
 
 function requestApi(method, url) {
   return new Promise(function (resolve, reject) {
