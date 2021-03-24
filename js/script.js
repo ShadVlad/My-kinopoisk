@@ -16,7 +16,7 @@ function apiSearch(event) {
     return;
   }
   movie.innerHTML = '<div class="spinner"></div>';
-  //console.log("searchText: ", searchText);
+  console.log("searchText: ", searchText);
   fetch(server)
     .then((value) => {
       if (value.status !== 200) {
@@ -167,7 +167,7 @@ function showFullInfo() {
 document.addEventListener("DOMContentLoaded", () => {
   //console.log("Ура");
   fetch(
-    "https://api.themoviedb.org/3/trending/all/week?api_key=6f901a307f9152261580666f11e60bb2&language=ru"
+    "https://api.themoviedb.org/3/trending/all/week?api_key=c51d3f0070448d84fa60e1341dd94608&language=ru"
   )
     .then((value) => {
       if (value.status !== 200) {
